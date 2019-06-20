@@ -1,26 +1,36 @@
-import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { BrowserModule } from "@angular/platform-browser";
+import { NgModule } from "@angular/core";
+import { ReactiveFormsModule } from "@angular/forms";
+import { HttpClientModule } from '@angular/common/http';
 
-import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
-import { AddContryComponent } from './components/add-contry/add-contry.component';
-import { ListContryComponent } from './components/list-contry/list-contry.component';
-import { HeaderComponent } from './components/header/header.component';
-import { FooterComponent } from './components/footer/footer.component';
+// Routing Module
+import { AppRoutingModule } from "./app-routing.module";
+
+// Components
+import { AppComponent } from "./app.component";
+import { AddCountryComponent } from "./components/add-country/add-country.component";
+import { ListCountryComponent } from "./components/list-country/list-country.component";
+import { HeaderComponent } from "./components/header/header.component";
+import { FooterComponent } from "./components/footer/footer.component";
+
+// services
+import { CountryService } from "./services/country.service";
 
 @NgModule({
   declarations: [
     AppComponent,
-    AddContryComponent,
-    ListContryComponent,
+    AddCountryComponent,
+    ListCountryComponent,
     HeaderComponent,
     FooterComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    ReactiveFormsModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [CountryService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

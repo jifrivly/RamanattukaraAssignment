@@ -1,0 +1,25 @@
+<h2>Add Country</h2>
+<form [formGroup]="addCountryForm" (ngSubmit)="addCountry()">
+  <label for="name">Country Name : </label>
+  <select formControlName="name" name="name" id="name">
+    <option *ngFor="let name of countryName">
+      {{name.country}}
+    </option>
+  </select>
+  <br />
+  <label for="code">Country Code : </label>
+  <input formControlName="code" type="number" name="code" />
+  <br />
+  <label for="currency">Currency : </label>
+  <input formControlName="currency" type="text" name="currency" />
+  <br />
+  <label for="status">Status : </label>
+  <textarea formControlName="status" name="status" id="status" cols="30" rows="10"></textarea>
+  <br />
+  <button type="submit">ADD</button>
+
+</form>
+
+{{this.addCountryForm.value | json }}
+<br>
+<!-- {{this.countryName | json}} -->

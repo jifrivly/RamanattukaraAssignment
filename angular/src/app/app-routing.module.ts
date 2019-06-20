@@ -1,11 +1,11 @@
 import { NgModule } from "@angular/core";
 import { Routes, RouterModule } from "@angular/router";
-import { ListContryComponent } from "./components/list-contry/list-contry.component";
-import { AddContryComponent } from "./components/add-contry/add-contry.component";
+import { ListCountryComponent } from "./components/list-country/list-country.component";
+import { AddCountryComponent } from "./components/add-country/add-country.component";
 
 const routes: Routes = [
-  { path: "", component: ListContryComponent },
-  { path: "add", component: AddContryComponent }
+  { path: "", component: ListCountryComponent },
+  { path: "add", component: AddCountryComponent }
 ];
 
 @NgModule({
