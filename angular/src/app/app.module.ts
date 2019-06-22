@@ -12,6 +12,7 @@ import { AddCountryComponent } from "./components/add-country/add-country.compon
 import { ListCountryComponent } from "./components/list-country/list-country.component";
 import { HeaderComponent } from "./components/header/header.component";
 import { FooterComponent } from "./components/footer/footer.component";
+import { EditCountryComponent } from './components/edit-country/edit-country.component';
 
 // services
 import { CountryService } from "./services/country.service";
@@ -22,7 +23,8 @@ import { CountryService } from "./services/country.service";
     AddCountryComponent,
     ListCountryComponent,
     HeaderComponent,
-    FooterComponent
+    FooterComponent,
+    EditCountryComponent
   ],
   imports: [
     BrowserModule,

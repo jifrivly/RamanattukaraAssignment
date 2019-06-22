@@ -9,12 +9,14 @@ import { CountryModel } from 'src/app/model/country.model';
 })
 export class ListCountryComponent implements OnInit {
   countryList: CountryModel[];
+  uri: String = "http://localhost:4545/uploads/"
 
   constructor(private countryService: CountryService) { }
 
   ngOnInit() {
     this.countryService.getCountry().subscribe((countryList) => {
-      this.countryList = countryList;
+      this.countryList = countryList["data"];
+      // var list = this.countryList
     });
   }
 }

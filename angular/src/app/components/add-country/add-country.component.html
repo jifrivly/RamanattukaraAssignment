@@ -13,6 +13,9 @@
   <label for="currency">Currency : </label>
   <input formControlName="currency" type="text" name="currency" />
   <br />
+  <label for="countryFlag">Select File : </label>
+  <input type="file" (change)="onSelectedFile($event)" name="countryFlag" id="countryFlag">
+  <br />
   <label for="status">Status : </label>
   <textarea formControlName="status" name="status" id="status" cols="30" rows="10"></textarea>
   <br />
