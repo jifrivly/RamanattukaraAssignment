@@ -2,10 +2,12 @@
 <form [formGroup]="addCountryForm" (ngSubmit)="addCountry()">
   <label for="name">Country Name : </label>
   <select formControlName="name" name="name" id="name">
-    <option *ngFor="let name of countryName">
-      {{name.country}}
+    <option disabled selected>Select country</option>
+    <option *ngFor="let name of countryName" [ngValue]="name.country">
+      {{name.country | uppercase}}
     </option>
   </select>
+
   <br />
   <label for="code">Country Code : </label>
   <input formControlName="code" type="number" name="code" />

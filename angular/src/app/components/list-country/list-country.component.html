@@ -1,11 +1,19 @@
 <h1>Countries</h1>
-{{this.countryList | json}} <br><br>
-<div *ngFor="let item of this.countryList">
-    ID : {{item._id}} <br>
-    <img [src]="uri + item.fileName" alt="{{uri + item.fileName}}">
-    <br>
-    Name : {{item.name + ",  Code : " + item.code}}
-    <br>
-    Currency : {{item.currency + ", Status : " + item.status}}
-    <br><br><br>
-</div>
+<!-- {{this.countryList | json}} <br><br> -->
+<ng-container *ngIf="this.countryListFound; else elseTemplate">
+    <div *ngFor="let item of this.countryList">
+        ID : {{item._id}} <br>
+        <img [src]="uri + item.fileName" alt="{{uri + item.fileName}}">
+        <br>
+        Name : {{item.name + ",  Code : " + item.code}}
+        <br>
+        Currency : {{item.currency + ", Status : " + item.status}}
+        <br><br>
+        <button (click)="delete(item._id)">delete</button>
+        <button (click)="edit(item._id)">edit</button>
+        <br><br>
+    </div>
+</ng-container>
+<ng-template #elseTemplate>
+    <h2>No country Found.. Add one to display...</h2>
+</ng-template>

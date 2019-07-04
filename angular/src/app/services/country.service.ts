@@ -10,10 +10,13 @@ interface CountryNameInterface {
   country: String
 }
 
+
 @Injectable({
   providedIn: "root"
 })
 export class CountryService {
+
+  url: string = "http://localhost:4545/country/";
 
   constructor(private http: HttpClient) { }
 
@@ -24,20 +27,20 @@ export class CountryService {
   }
 
 
-
-
   // add country
   addCountry(countryData: CountryModel): Observable<any> {
-    return this.http.post<any>('http://localhost:4545/country/add', countryData);
+    return this.http.post<any>(this.url + "add", countryData);
   }
+
 
   // file upload service
   upload(formData): Observable<any> {
-    return this.http.post<any>("http://localhost:4545/country/upload", formData)
+    return this.http.post<any>(this.url + "upload", formData)
       .pipe(
         catchError(this.handleError)
       );
   };
+
 
   // handling errors in file uploading
   private handleError(err: HttpErrorResponse) {
@@ -50,18 +53,25 @@ export class CountryService {
   }
 
 
-
-
   // getting country details
-  getCountry(): Observable<CountryModel[]> {
-    return this.http.get<CountryModel[]>("http://localhost:4545/country/list");
+  getCountry(): Observable<any> {
+    return this.http.get<any>(this.url + "list");
   }
 
 
-
   // getting country details by ID
-  getCountryById(id): Observable<CountryModel> {
-    return this.http.get<CountryModel>("http://localhost:4545/country/:id");
+  getCountryById(id): Observable<any> {
+    return this.http.get<any>(this.url + "get/" + id);
+  }
+
+
+  deleteCountry(id) {
+    return this.http.post(this.url + "delete/", { id });
+  }
+
+
+  editCountry(id, newCountryData) {
+    return this.http.post(this.url + "edit", { id, newCountryData });
   }
 
 

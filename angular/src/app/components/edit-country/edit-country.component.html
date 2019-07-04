@@ -1,3 +1,42 @@
-<p>
-  edit-country works!
-</p>
+{{this.country|json}}
+
+
+
+<h2>Edit Country</h2>
+
+<ng-container *ngIf="dataFound; else elseTemplate">
+  <form [formGroup]="editCountryForm" (ngSubmit)="updateCountry()">
+    <label for="name">Country Name : </label>
+    <select formControlName="name" name="name" id="name">
+      <option [ngValue]="null" disabled>Select a country name</option>
+      <option *ngFor="let name of countryName" [ngValue]="name.country">
+        {{name.country}}
+      </option>
+    </select>
+    <br />
+    <label for="code">Country Code : </label>
+    <input formControlName="code" type="number" name="code" />
+    <br />
+    <label for="currency">Currency : </label>
+    <input formControlName="currency" type="text" name="currency" />
+    <br />
+    <!-- <label for="countryFlag">Select File : </label>
+    <input type="file" (change)="onCahngeFile($event)" name="countryFlag" id="countryFlag">
+    <br /> -->
+    <label for="status">Status : </label>
+    <textarea formControlName="status" name="status" id="status" cols="30" rows="10"></textarea>
+    <br />
+    <button type="submit">UPDATE</button>
+
+  </form>
+</ng-container>
+<ng-template #elseTemplate>
+  <h2>No data Found to edit</h2>
+</ng-template>
+
+<div *ngIf="message!=''"> {{message}} </div>
+
+
+{{this.editCountryForm.value | json }}
+<br>
+<!-- {{this.countryName | json}} -->
